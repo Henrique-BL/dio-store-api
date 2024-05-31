@@ -5,7 +5,7 @@ services:
     image: 'bitnami/mongodb:latest'
     ports:
       - 27017:27017
-    restar: on-failure
+    restart: on-failure
     environment:
       - MONGODB_REPLICA_SET_MODE=primary
       - MONGODB_ADVERTISED_HOSTNAME= localhost
