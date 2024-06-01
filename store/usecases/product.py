@@ -11,7 +11,7 @@ class ProductUseCase:
         self.collection = self.database.get_collection("products")
 
     async def create(self, body: ProductIn):
-        self.collection.insert_one(body.model_dump())
+        self.collection.insert_one(**body.model_dump())
 
 
 product_usecase = ProductUseCase()

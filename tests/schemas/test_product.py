@@ -16,7 +16,7 @@ def test_schemas_sucess():
 
 
 def test_schemas_error():
-    data = product_data()
+    data = {"name": "Iphone 14 Pro Max", "quantity": 10, "price": 8.500}
 
     with pytest.raises(ValidationError) as err:
         ProductIn.model_validate(data)
