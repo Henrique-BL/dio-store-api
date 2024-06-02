@@ -42,5 +42,15 @@ class ProductUseCase:
 
         return ProductUpdateOut(**result)
 
+    async def delete(self, id: UUID) -> bool:
+        product = await self.collection.find_one({"id": id})
+
+        if not product:
+            raise NotFoundException(f"Product not found with id {id}")
+
+        result = await self.collection.delete_one({"id": id})
+
+        return True if result.deleted_count > 0 else False
+
 
 product_usecase = ProductUseCase()
