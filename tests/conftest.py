@@ -4,7 +4,7 @@ import asyncio
 import pytest
 
 from tests.factories import product_data, products_data
-from tests.schemas.product import ProductIn, ProductUpdate
+from store.schemas.product import ProductIn, ProductUpdate
 from store.usecases.product import product_usecase
 
 

@@ -2,14 +2,14 @@ from uuid import UUID
 
 from pydantic import ValidationError
 import pytest
+from store.models.product import ProductModel
 from tests.factories import product_data
-from tests.schemas.product import ProductIn
+from store.schemas.product import ProductIn
 
 
 def test_schemas_sucess():
     data = product_data()
-
-    product = ProductIn.model_validate(data)
+    product = ProductModel(**data)
 
     assert product.name == "Iphone 14 Pro Max"
     assert isinstance(product.id, UUID)

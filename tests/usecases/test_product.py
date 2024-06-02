@@ -4,7 +4,7 @@ import uuid
 import pytest
 from store.core.exceptions import NotFoundException
 from store.usecases.product import product_usecase
-from tests.schemas.product import ProductOut, ProductUpdateOut
+from store.schemas.product import ProductOut, ProductUpdateOut
 
 
 async def test_usecases_insert_return_sucess(product_in):
