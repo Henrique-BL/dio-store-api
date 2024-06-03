@@ -9,7 +9,6 @@ from store.schemas.product import ProductOut, ProductUpdateOut
 
 async def test_usecases_insert_return_sucess(product_in):
     result = await product_usecase.create(body=product_in)
-
     assert isinstance(result, ProductOut)
     assert result.name == "Iphone 14 Pro Max"
 
@@ -37,7 +36,7 @@ async def test_usecases_query_return_sucess():
 
 
 async def test_usecases_update_return_sucess(product_inserted, product_up):
-    product_up.price = 77.500
+    product_up.price = "9.500"
     result = await product_usecase.update(id=product_inserted.id, body=product_up)
 
     assert isinstance(result, ProductUpdateOut)

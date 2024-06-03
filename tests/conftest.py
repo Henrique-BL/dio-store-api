@@ -28,6 +28,7 @@ async def clear_collections(mongo_client):
     for name in collections_names:
         if name.startswith("system"):
             continue
+
     await mongo_client.get_database()[name].delete_many({})
 
 
