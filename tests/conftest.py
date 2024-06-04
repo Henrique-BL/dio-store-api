@@ -6,6 +6,7 @@ import pytest
 from tests.factories import product_data, products_data
 from store.schemas.product import ProductIn, ProductUpdate
 from store.usecases.product import product_usecase
+from httpx import AsyncClient
 
 
 @pytest.fixture(scope="session")
@@ -60,3 +61,16 @@ def products_in():
 @pytest.fixture
 async def products_inserted(products_in):
     return [await product_usecase.create(body=product) for product in products_in]
+
+
+@pytest.fixture
+async def client() -> AsyncClient:
+    from store.main import app
+
+    async with AsyncClient(app=app, base_url="http://store") as client:
+        yield client
+
+
+@pytest.fixture
+def products_url() -> str:
+    return "/products/"
